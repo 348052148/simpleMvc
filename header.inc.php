@@ -47,5 +47,5 @@ include_once 'Lib/mode_lib/dao.class.php';
  * App 目录下的会实现动态包含。
  */
 include_once "App/Controllor/ServiceImpl.php";
-
+/*jik*/
 
