@@ -62,10 +62,10 @@ class ConfigManager{
 }
 
 class Application{
-
+	public $static;
 	public function __construct()
 	{
-
+		$this->static="App/Static/";
 	}
 	public function call()
 	{
