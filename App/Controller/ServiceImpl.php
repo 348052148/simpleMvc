@@ -17,7 +17,10 @@ class ServiceImpl extends Control
 
 		//echo $result['CONTENT'];
 		//echo $_GET['xc'];
-		$this->load(new actionIndex());
+		Affair::mode()->findByPk(12);
+		$r=Affair::mode()->attribute;
+		echo $r['CONTENT'];
+		//$this->load(new actionIndex());
 		//echo $conn->getRealConn();
 		
 	}

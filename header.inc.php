@@ -42,6 +42,7 @@ include_once 'Lib/db_lib/datapool/connpool.factory.php';
  */
 include_once 'Lib/model_lib/model.interface.php';
 include_once 'Lib/model_lib/dao.class.php';
+include_once 'Lib/model_lib/model.class.php';
 
 /**
  * view_lib
@@ -54,6 +55,8 @@ include_once 'Lib/view_lib/view.class.php';
 //include_once "App/Controller/ServiceImpl.php";
 
 include_once 'App/View/index.view.php';
+
+include_once 'App/Model/affair.model.php';
 
 
 
