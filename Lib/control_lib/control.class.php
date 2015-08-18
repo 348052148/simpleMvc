@@ -105,6 +105,13 @@ abstract class Control implements Icontrol
 			$this->doPost();
 		}
 	}
+	/**
+	 * 加载视图 并作一些释放处理 这里可以做一个 前置处理和后置处理
+	 */
+	public function load($view)
+	{
+		exit;
+	}
 	
 	public abstract function doGet();
 	/**

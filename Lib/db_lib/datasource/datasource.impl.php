@@ -42,7 +42,6 @@ class MysqlDataSource implements DataSource
 		return mysql_connect($this->host,$this->user,$this->pass,true);
 	}
 	
-	
 	public function getDbConfig()
 	{
 		
@@ -53,6 +52,9 @@ class MysqlDataSource implements DataSource
 		
 	}
 	
-	
+	public function query($sql,$conn)
+	{
+		return mysql_query($sql,$conn);
+	}
 	
 }

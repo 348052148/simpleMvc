@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * Application Init
+ */
+class C extends Core{}
 /**
  * 初始化 config配置数据
  */
@@ -18,11 +21,4 @@ ConfigManager::getInstance()->setControlConfig(include 'Config/control_config.ph
  */
 $router=new Router(ConfigManager::getInstance()->getControlConfig());
 
-/**
- * 完全匹配规则
- */
-$router->mapped($_SERVER['QUERY_STRING']);
-/**
- *简易匹配规则
- */
-
+$router->mapped();

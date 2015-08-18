@@ -9,5 +9,6 @@ interface Icontrol
 	
 	public function service();
 	
+	public function load($view);
 	
 }

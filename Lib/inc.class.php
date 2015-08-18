@@ -59,6 +59,39 @@ class ConfigManager{
 		return self::$configManager;
 	}
 	
+}
+
+class Application{
+
+	public function __construct()
+	{
+
+	}
+	public function call()
+	{
+		echo "SB";
+	}
+}
+class Core {
 	
+	private static $app=null;
+	public static function app()
+	{
+		if(self::$app==null)
+			self::$app=new Application();
+		return self::$app;
+	}
+	public static function config()
+	{
+		return ConfigManager::getInstance();
+	}
 	
+}
+/*
+ * ¿ÉÔÚ´Ë×¢²á
+ */
+function __autoload($className)
+{
+	include_once "App/Controller/".$className.'.php';
+	include_once 'App/View/'.$className.'.php';
 }

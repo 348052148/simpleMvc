@@ -67,7 +67,7 @@ class Conn implements Iconn
 	 */
 	public function query($sql)
 	{
-		return mysql_query($sql,$this->realConn);
+		return $this->dataSource->query($sql,$this->realConn);
 	}
 	
 }

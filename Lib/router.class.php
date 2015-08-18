@@ -20,20 +20,26 @@ class Router
 		
 	}
 	
-	public function mapped($url)
+	public function mapped()
 	{
-		
-		foreach($this->urlControl as $urls=>$control)
+		$control=ConfigManager::getInstance()->getConfig();
+		if($control['control_z']!=0)
 		{
-			if($urls==$url)
+			foreach($this->urlControl as $urls=>$control)
 			{
-				/**
-				 * 处理映射的 控制器 类
-				 */
-				//include $control;
-				$r=new $control();
-				$r->service();
+				if($urls==$url)
+				{
+					/**
+					 * 处理映射的 控制器 类
+					 */
+					//include $control;
+					$r=new $control();
+					$r->service();
+				}
 			}
+		}else {
+			$c=new $_GET['c'];
+			$c->service();
 		}
 	}
 	

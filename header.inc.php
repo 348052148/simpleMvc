@@ -40,12 +40,20 @@ include_once 'Lib/db_lib/datapool/connpool.factory.php';
 /**
  * mode_lib
  */
-include_once 'Lib/mode_lib/mode.interface.php';
-include_once 'Lib/mode_lib/dao.class.php';
+include_once 'Lib/model_lib/model.interface.php';
+include_once 'Lib/model_lib/dao.class.php';
 
+/**
+ * view_lib
+ */
+include_once 'Lib/view_lib/view.interface.php';
+include_once 'Lib/view_lib/view.class.php';
 /**
  * App 目录下的会实现动态包含。
  */
-include_once "App/Controllor/ServiceImpl.php";
-/*jik*/
+//include_once "App/Controller/ServiceImpl.php";
+
+include_once 'App/View/index.view.php';
+
+
 
