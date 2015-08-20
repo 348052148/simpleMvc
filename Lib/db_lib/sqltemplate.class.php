@@ -71,6 +71,15 @@ class SqlTemplate
 		}
 		return $list;
 	}
+	public function execute($sql){
+		$conn=$this->connPool->getConn();
+		
+		$result=$conn->query($sql);
+		
+		$this->connPool->freeConn($conn);
+		
+		return $result;
+	}
 	/**
 	 * 返回自定义数据结构
 	 */
