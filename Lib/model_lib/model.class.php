@@ -1,6 +1,6 @@
 <?php
 /*
- * 默认加载 id为id ,key为rowName
+ * 默认加载 id为id ,key为rowName 
  */
 abstract class Model implements Imodel
 {
@@ -23,9 +23,50 @@ abstract class Model implements Imodel
 		$this->sqlT=SqlTemplate::getInstance();
 		
 	}
+	/**
+	 * 存在0的风险
+	 */
+	public function delete($id=0){
+		if($id==0){
+			$id=$this->pid;
+		}
+		$sql="delete from $this->table_name where ";
+		if (empty($this->ruls)){
+			$sql.="{$this->m_idName}='$id'";
+		}else{
+			$sql.="{$this->ruls['ID']}='$id'";
+		}
+		$this->sqlT->execute($sql);
+	}
 	public function save()
 	{
-		
+		$sql="insert into $this->table_name (";
+		$vals="values(";
+		if(empty($this->ruls)){
+			foreach ($this->attribute as $k=>$v)
+			{
+				$sql.=$k.',';
+				$vals.="'$v',";
+			}
+			$sql=substr($sql, 0, -1);
+			$vals=substr($vals, 0, -1);
+			$sql.=') ';
+			$sql.=$vals.")";
+		}else{
+			foreach ($this->ruls as $k=>$v){
+				foreach ($this->attribute as $key=>$val){
+					if($k==$key){
+						$sql.=$v.',';
+						$vals.="'$val',";
+					}
+				}
+			}
+			$sql=substr($sql, 0, -1);
+			$vals=substr($vals, 0, -1);
+			$sql.=') ';
+			$sql.=$vals.")";
+		}
+		$this->sqlT->execute($sql);
 	}
 	public function update()
 	{

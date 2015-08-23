@@ -71,6 +71,9 @@ class SqlTemplate
 		}
 		return $list;
 	}
+	/**
+	 * Ö´ÐÐ sql
+	 */
 	public function execute($sql){
 		$conn=$this->connPool->getConn();
 		

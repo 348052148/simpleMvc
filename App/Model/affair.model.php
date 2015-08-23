@@ -14,6 +14,9 @@ class Affair extends Model
 	}
 	
 	public function cast(){
-		
+		return array(
+			'ID'=>'AFF_ID',
+			'Contents'=>'CONTENT'
+		);
 	}
 }
