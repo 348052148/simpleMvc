@@ -52,9 +52,26 @@ class MysqlDataSource implements DataSource
 		
 	}
 	
-	public function query($sql,$conn)
+	public function query($sql,$type,$conn)
 	{
-		return mysql_query($sql,$conn);
+		$ret=mysql_query($sql,$conn);
+		if($type==DataBase::$NOT_RETURN)
+		{
+			return $ret;
+		}
+		if ($type==DataBase::$RETURN_ROW){
+			if($row=mysql_fetch_assoc($ret))
+				return $row;
+		}
+		if($type==DataBase::$RETURN_MUL_ROW){
+			$list=array();
+			while($row=mysql_fetch_assoc($ret))
+			{
+				array_push($list, $row);
+			}
+			return $list;
+		}
+
 	}
 	
 }

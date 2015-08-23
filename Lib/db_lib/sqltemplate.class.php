@@ -40,15 +40,12 @@ class SqlTemplate
 	//	$result=$this->query($sql);
 		$conn=$this->connPool->getConn();
 		
-		$result=$conn->query($sql);
+		$result=$conn->query($sql,DataBase::$RETURN_ROW);
 		
 		
 		$this->connPool->freeConn($conn);
 		
-		if($row=mysql_fetch_assoc($result))
-			return $row;
-		
-		return false;
+		return $result;
 	}
 	/**
 	 * 返回查询的多列数据
@@ -60,16 +57,11 @@ class SqlTemplate
 		//$result=$this->query($sql);
 		$conn=$this->connPool->getConn();
 		
-		$result=$conn->query($sql);
+		$result=$conn->query($sql,DataBase::$RETURN_MUL_ROW);
 		
 		$this->connPool->freeConn($conn);
 		
-		$list=array();
-		while($row=mysql_fetch_assoc($result))
-		{
-			array_push($list, $row);
-		}
-		return $list;
+		return $result;
 	}
 	/**
 	 * 执行 sql
@@ -77,7 +69,7 @@ class SqlTemplate
 	public function execute($sql){
 		$conn=$this->connPool->getConn();
 		
-		$result=$conn->query($sql);
+		$result=$conn->query($sql,DataBase::$NOT_RETURN);
 		
 		$this->connPool->freeConn($conn);
 		
@@ -91,7 +83,7 @@ class SqlTemplate
 		//$result=$this->query($sql);
 		$conn=$this->connPool->getConn();
 		
-		$result=$conn->query($sql);
+		$result=$conn->query($sql,DataBase::$NOT_RETURN);
 		
 		$this->connPool->freeConn($conn);
 		

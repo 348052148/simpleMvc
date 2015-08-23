@@ -7,6 +7,13 @@
  * @author Administrator
  *
  */
+class DataBase{
+	public static $NOT_RETURN=1;
+	
+	public static $RETURN_ROW=2;
+	
+	public static $RETURN_MUL_ROW=3;
+}
 interface DataSource
 {
 	public function getDbConfig();

@@ -65,9 +65,9 @@ class Conn implements Iconn
 	 * 数据连接，提供查询功能。
 	 * @see Iconn::query()
 	 */
-	public function query($sql)
+	public function query($sql,$type)
 	{
-		return $this->dataSource->query($sql,$this->realConn);
+		return $this->dataSource->query($sql,$type,$this->realConn);
 	}
 	
 }

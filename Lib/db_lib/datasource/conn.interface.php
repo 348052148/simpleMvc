@@ -10,5 +10,5 @@ interface Iconn
 	
 	public function freeConn();
 	
-	public function query($sql);
+	public function query($sql,$type);
 }

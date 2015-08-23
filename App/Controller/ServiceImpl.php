@@ -14,17 +14,17 @@ class ServiceImpl extends Control
 		//echo $session->getSession("dom")."</br>";
 		//$sql=SqlTemplate::getInstance();
 		//$result=$sql->queryForRow("select * from affair");
-
+		//echo DataSource::$RETURN_ROW;
 		//echo $result['CONTENT'];
 		//echo $_GET['xc'];
-		//Affair::mode()->findByPk(168);
+		Affair::mode()->findByPk(168);
 		$r=&Affair::mode()->attribute;
 		//$r['Contents']="haoba111";
 		//$r['CONTENT']="经常性思想政治工作台帐";
 		//Affair::mode()->update();
 		//Affair::mode()->save();
 		//Affair::mode()->delete(175);
-		//echo $r['CONTENT'];
+		echo $r['CONTENT'];
 		//$this->load(new actionIndex());
 		//echo $conn->getRealConn();
 		
