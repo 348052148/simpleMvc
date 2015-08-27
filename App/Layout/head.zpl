@@ -17,7 +17,7 @@ Released   : 20120203
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Limitless by FCT</title>
 <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-<link href="<?php echo C::app()->static; ?>style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="{base}style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 	<div id="menu-wrapper">

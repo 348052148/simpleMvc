@@ -62,10 +62,12 @@ class ConfigManager{
 }
 
 class Application{
-	public $static;
+	private $config; 
+	public $static; //¾²Ì¬ÎÄ¼þÄ¿Â¼
 	public function __construct()
 	{
-		$this->static="App/Static/";
+		$this->config=ConfigManager::getInstance()->getConfig();
+		$this->static=$this->config['static'];
 	}
 	public function call()
 	{
@@ -93,5 +95,5 @@ class Core {
 function __autoload($className)
 {
 	include_once "App/Controller/".$className.'.php';
-	include_once 'App/View/'.$className.'.php';
+	//include_once 'App/View/'.$className.'.php';
 }

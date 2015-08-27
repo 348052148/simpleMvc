@@ -17,16 +17,24 @@ class ServiceImpl extends Control
 		//echo DataSource::$RETURN_ROW;
 		//echo $result['CONTENT'];
 		//echo $_GET['xc'];
-		Affair::mode()->findByPk(168);
-		$r=&Affair::mode()->attribute;
+		//Affair::mode()->findByPk(168);
+		//$r=&Affair::mode()->attribute;
 		//$r['Contents']="haoba111";
 		//$r['CONTENT']="经常性思想政治工作台帐";
 		//Affair::mode()->update();
 		//Affair::mode()->save();
 		//Affair::mode()->delete(175);
-		echo $r['CONTENT'];
-		//$this->load(new actionIndex());
+		//echo $r['CONTENT'];
+		//$t->setParams($a);
+		$this->load(new actionIndex(array(
+				'data'=>'CCCNU',
+				'base'=>C::app()->static
+		)));
 		//echo $conn->getRealConn();
+// 		$string = "April 15, 2003";
+// 		$pattern = "/(\w+) (\d+), (\d+)/i";
+// 		$replacement = "\${1}1,\$3";
+// 		print preg_replace($pattern, $replacement, $string);
 		
 	}
 	public function doPost()

@@ -6,5 +6,6 @@ return array(
 	"layout"=>array(
 		'header'=>'App/Layout/head.zpl',
 		'floor'=>'App/Layout/floor.zpl'
-	)
+	),
+	"static"=>"App/Static/"
 );

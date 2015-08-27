@@ -19,9 +19,11 @@ abstract class Model implements Imodel
 		$this->table_name=$this->table();
 		//$this->attribute=array();
 		$this->ruls=$this->cast();
-		$this->m_idName="AFF_ID";
 		$this->sqlT=SqlTemplate::getInstance();
 		
+	}
+	public function setPkId($id){
+		$this->m_idName=$id;
 	}
 	/**
 	 * ´æÔÚ0µÄ·çÏÕ

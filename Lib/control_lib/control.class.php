@@ -110,6 +110,7 @@ abstract class Control implements Icontrol
 	 */
 	public function load($view)
 	{
+		$view->render();
 		exit;
 	}
 	

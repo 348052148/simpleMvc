@@ -23,6 +23,7 @@ class Router
 	public function mapped()
 	{
 		$control=ConfigManager::getInstance()->getConfig();
+ 		$url='';
 		if($control['control_z']!=0)
 		{
 			foreach($this->urlControl as $urls=>$control)
@@ -38,8 +39,11 @@ class Router
 				}
 			}
 		}else {
-			$c=new $_GET['c'];
-			$c->service();
+			$class=$_GET['c'];
+			if(class_exists($class)){
+				$c= new $class;
+				$c->service();
+			}
 		}
 	}
 	
