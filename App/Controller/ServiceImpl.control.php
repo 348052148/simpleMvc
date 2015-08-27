@@ -1,6 +1,6 @@
 <?php
 
-class ServiceImpl extends Control
+class cServiceImpl extends Control
 {
 	/**
 	 * ´¦Àí
@@ -26,7 +26,7 @@ class ServiceImpl extends Control
 		//Affair::mode()->delete(175);
 		//echo $r['CONTENT'];
 		//$t->setParams($a);
-		$this->load(new actionIndex(array(
+		$this->load(new vIndex(array(
 				'data'=>'CCCNU',
 				'base'=>C::app()->static
 		)));

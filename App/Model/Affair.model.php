@@ -1,5 +1,5 @@
 <?php
-class Affair extends Model
+class mAffair extends Model
 {
 	private static $m=null;
 	public static function mode(){

@@ -89,11 +89,4 @@ class Core {
 	}
 	
 }
-/*
- * ¿ÉÔÚ´Ë×¢²á
- */
-function __autoload($className)
-{
-	include_once "App/Controller/".$className.'.php';
-	//include_once 'App/View/'.$className.'.php';
-}
+

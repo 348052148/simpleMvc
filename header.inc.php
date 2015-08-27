@@ -54,9 +54,31 @@ include_once 'Lib/view_lib/view.class.php';
  */
 //include_once "App/Controller/ServiceImpl.php";
 
-include_once 'App/View/index.view.php';
+//include_once 'App/View/Index.view.php';
 
-include_once 'App/Model/affair.model.php';
+//include_once 'App/Model/Affair.model.php';
 
 
+/*
+ * 可在此注册  实现自动加载
+*/
+function __autoload($className)
+{
+	if(preg_match ("/^c/",$className))
+	{
+		$className=substr($className, 1,strlen($className)-1);
+		include_once 'App/Controller/'.$className.'.control.php';
+	}
+	if(preg_match ("/^m/",$className))
+	{
+		$className=substr($className, 1,strlen($className)-1);
+		include_once 'App/Model/'.$className.'.model.php';
+	}
+	if(preg_match ("/^v/",$className))
+	{
+		$className=substr($className, 1,strlen($className)-1);
+		include_once 'App/View/'.$className.'.view.php';
+	}
+	//include_once 'App/View/'.$className.'.php';
+}
 

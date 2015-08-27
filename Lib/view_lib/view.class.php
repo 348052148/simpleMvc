@@ -1,20 +1,27 @@
 <?php
-class View implements Iview
+/*
+ *  {key} 这是带入参数
+ *  {:key} 这是系统参数
+ */
+abstract class View implements Iview
 {
 	private $system; //系统参数
 	private $template; //模板路径
 	private $params=array();
 	private $layout; //布局
 	public function __construct($params=array()){
-		$layout=ConfigManager::getInstance()->getConfig();
-		$this->layout=$layout['layout'];
+		$conf=ConfigManager::getInstance()->getConfig();
+		$this->layout=$conf['layout'];
 		$this->params=$params;
+		$this->system=$conf;
 	}
 	public function render()
 	{
 		$this->header();
 		$data=file_get_contents($this->template);
+		$data=$this->filter($data);
 		$data=$this->tagFilter($data);
+		$data=$this->sysFilter($data);
 		//$data=$this->incFilter($data);
 		echo $data;
 		//include $this->template;
@@ -48,12 +55,24 @@ class View implements Iview
 			foreach ($this->params as $k=>$v)
 			{
 				$data=preg_replace("/{".$k."}/", "$v", $data);
-			}	
+			}
 		}
 		return $data;
 	}
-	private function incFilter($data)
+	private function sysFilter($data)
 	{
-		
+		if (!empty($this->system) && is_array($this->system))
+		{
+			foreach ($this->system as $k=>$v)
+			{
+				$data=preg_replace("/{:".$k."}/", "$v", $data);
+			}
+		}
+		return $data;
 	}
+	/*
+	 * 此函数必须要返回值   本过滤作为所有过滤的最前置过滤，主要考虑到用户的自定义过滤会导致不稳定
+	 * 本次自定过滤机制，考虑了用传入函数机制，但1由于作者偏爱抽象，所以用了抽象
+	 */
+	public abstract function filter($data);
 }

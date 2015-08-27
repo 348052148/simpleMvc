@@ -19,7 +19,9 @@ class Router
 		$this->urlControl=$url_contrl;
 		
 	}
-	
+	/*
+	 * 路由管理器，应该过滤掉不正常的路由，保证程序的绝对性。APP应用对外部应该是私有的
+	 */
 	public function mapped()
 	{
 		$control=ConfigManager::getInstance()->getConfig();
