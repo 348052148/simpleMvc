@@ -7,5 +7,6 @@ return array(
 		'header'=>'App/Layout/head.zpl',
 		'floor'=>'App/Layout/floor.zpl'
 	),
-	"static"=>"App/Static/"
+	"static"=>"App/Static/",
+     "libs" => "Lib/"
 );

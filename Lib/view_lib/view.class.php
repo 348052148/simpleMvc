@@ -5,23 +5,23 @@
  */
 abstract class View implements Iview
 {
-	private $system; //系统参数
+	private $system=array(); //系统参数
 	private $template; //模板路径
 	private $params=array();
 	private $layout; //布局
+	private $tagList;
 	public function __construct($params=array()){
 		$conf=ConfigManager::getInstance()->getConfig();
 		$this->layout=$conf['layout'];
 		$this->params=$params;
 		$this->system=$conf;
+		$this->tagList=include 'Lib/weiget_lib/weiget.list.php';
 	}
 	public function render()
 	{
 		$this->header();
 		$data=file_get_contents($this->template);
-		$data=$this->filter($data);
-		$data=$this->tagFilter($data);
-		$data=$this->sysFilter($data);
+		$data=$this->init_filter($data);
 		//$data=$this->incFilter($data);
 		echo $data;
 		//include $this->template;
@@ -30,12 +30,12 @@ abstract class View implements Iview
 	public function header()
 	{
 		$head=file_get_contents($this->layout['header']);
-		echo $this->tagFilter($head);
+		echo $this->init_filter($head);
 	}
 	public function floor()
 	{
 		$floor=file_get_contents($this->layout['floor']);
-		echo $this->tagFilter($floor);
+		echo $this->init_filter($floor);
 	}
 	public function setParams($params)
 	{
@@ -48,16 +48,36 @@ abstract class View implements Iview
 	/*
 	 * 过滤规则可以进行重写 实现单独的类 或者实现动态加载。
 	 */
+	private function init_filter($data)
+	{
+	    $data=$this->filter($data);
+	    $data=$this->tagFilter($data);
+	    $data=$this->dataFilter($data);
+	    $data=$this->sysFilter($data);
+	    return $data;
+	}
+	private function dataFilter($data)
+	{
+	    if (!empty($this->params) && is_array($this->params))
+	    {
+	        foreach ($this->params as $k=>$v)
+	        {
+	            $data=preg_replace("/{".$k."}/", "$v", $data);
+	        }
+	    }
+	    return $data;
+	}
 	private function tagFilter($data)
 	{
-		if (!empty($this->params) && is_array($this->params))
-		{
-			foreach ($this->params as $k=>$v)
-			{
-				$data=preg_replace("/{".$k."}/", "$v", $data);
-			}
-		}
+	    if (!empty($this->tagList) && is_array($this->tagList))
+	    {
+	        foreach ($this->tagList as $k=>$v)
+	        {
+	     $data=preg_replace("/{@".$k."}/", $v->render(), $data);
+	        }
+	    }
 		return $data;
+		
 	}
 	private function sysFilter($data)
 	{

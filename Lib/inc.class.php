@@ -69,6 +69,40 @@ class Application{
 		$this->config=ConfigManager::getInstance()->getConfig();
 		$this->static=$this->config['static'];
 	}
+	//预留 主要是discuz思想影响
+	private function init()
+	{
+	    $this->init_env();
+	    $this->init_session();
+	    $this->init_cache();
+	    $this->init_db();
+	    $this->init_user();
+	}
+	//加载环境变量
+	private function init_env()
+	{
+	    
+	}
+	//初始化session
+	private function init_session()
+	{
+	    
+	}
+	//初始化user
+	private function init_user()
+	{
+	    
+	}
+	//初始化db
+	private function init_db()
+	{
+	    
+	}
+	//初始化缓存
+	private function init_cache()
+	{
+	    
+	}
 	public function call()
 	{
 		echo "SB";

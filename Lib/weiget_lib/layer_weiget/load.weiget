@@ -1,0 +1,19 @@
+<link href='{:libs}weiget_lib/layer_weiget/load.css' rel='stylesheet' type='text/css'>
+<script>
+ var ttd = null;
+ document.onreadystatechange = subSomething;
+ /*
+	0: (Uninitialized) the send( ) method has not yet been invoked. 
+	1: (Loading) the send( ) method has been invoked, request in progress. 
+	2: (Loaded) the send( ) method has completed, entire response received. 
+	3: (Interactive) the response is being parsed. 
+	4: (Completed) the response has been parsed, is ready for harvesting. 
+ */
+ function subSomething() {
+  if(document.readyState=="complete"){
+   	document.body.style.background="";
+  }else{
+  	document.body.style.background="red";
+  }
+ }
+</script>

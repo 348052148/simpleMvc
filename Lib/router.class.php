@@ -45,7 +45,11 @@ class Router
 			if(class_exists($class)){
 				$c= new $class;
 				$c->service();
+			    
 			}
+// 			$classc = new ReflectionClass("cServiceImpl"); // 建立 Person这个类的反射类
+// 		     $instance  = $classc->newInstanceArgs();
+// 			$instance->service();
 		}
 	}
 	

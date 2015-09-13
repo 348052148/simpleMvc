@@ -49,6 +49,12 @@ include_once 'Lib/model_lib/model.class.php';
  */
 include_once 'Lib/view_lib/view.interface.php';
 include_once 'Lib/view_lib/view.class.php';
+
+/*
+ * weiget_lib
+ */
+ include_once 'Lib/weiget_lib/Progress.interface.php';
+ include_once 'Lib/weiget_lib/loadProgress.weiget.php';
 /**
  * App 目录下的会实现动态包含。
  */
