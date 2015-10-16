@@ -8,12 +8,19 @@ class ConfigManager{
 	static $configManager=null;
 	private $config;
 	private $dbConfig;
-	
+	private $cacheConf;
 	private $controlConfig;
 	/**
 	 * 主配置文件
 	 * @param unknown $config_arr
 	 */
+	private function __construct()
+	{
+	    $this->cacheConf=array();
+	    $this->config=array();
+	    $this->dbConfig=array();
+	    $this->controlConfig=array();
+	}
 	public function setConfig($config_arr)
 	{
 		$this->config=$config_arr;
@@ -44,7 +51,18 @@ class ConfigManager{
 	public function getControlConfig()
 	{
 		return $this->controlConfig;
-	}	
+	}
+	/**
+	 * cache配置文件
+	 */
+	public function setCacheConfig($cache_c)
+	{
+	    $this->cacheConf=$cache_c;
+	}
+	public function getCacheConfig()
+	{
+	    return $this->cacheConf;
+	}
 	/**
 	 * 获取实例 ---采用单例模式
 	 * @return ConfigManager
@@ -68,6 +86,7 @@ class Application{
 	{
 		$this->config=ConfigManager::getInstance()->getConfig();
 		$this->static=$this->config['static'];
+		$this->init(); 
 	}
 	//预留 主要是discuz思想影响
 	private function init()

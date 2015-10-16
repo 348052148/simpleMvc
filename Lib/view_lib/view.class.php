@@ -11,7 +11,7 @@ abstract class View implements Iview
 	private $layout; //²¼¾Ö
 	private $tagList;
 	public function __construct($params=array()){
-		$conf=ConfigManager::getInstance()->getConfig();
+		$conf=C::config()->getConfig();
 		$this->layout=$conf['layout'];
 		$this->params=$params;
 		$this->system=$conf;

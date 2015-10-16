@@ -17,7 +17,7 @@ class MysqlDataSource implements DataSource
 		/**
 		 * 初始化。数据库信息、 这里读取配置文件信息。
 		 */
-		$dbConfig=ConfigManager::getInstance()->getDbConfig();
+		$dbConfig=C::config()->getDbConfig();
 		
 		$this->host=$dbConfig['host'];
 		$this->user=$dbConfig['user'];

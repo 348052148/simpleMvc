@@ -30,7 +30,10 @@ ConfigManager::getInstance()->setDbConfig(include 'Config/db_config.php');
  *  初始化control 控制器
  */
 ConfigManager::getInstance()->setControlConfig(include 'Config/control_config.php');
-
+/**
+ * 初始化 cache 配置数据
+ */
+ ConfigManager::getInstance()->setCacheConfig(include 'Config/cache_config.php');
 /**
 	路由 规则映射
  */
